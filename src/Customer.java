@@ -19,7 +19,6 @@ public class Customer {
         for (int i = 0; i < usernames.length; i++) {
             if (username.equals(usernames[i]) && password.equals(passwords[i])) {
                 System.out.println("Login berhasil!\n");
-                // tambahkan kode untuk menampilkan halaman dashboard/user
                 loggedIn = true;
                 menuCustomer();
                 break;
@@ -27,6 +26,7 @@ public class Customer {
         }
         if (!loggedIn) {
             System.out.println("Username atau password salah.\n");
+            loginCustomer();
         }
     }
 
@@ -42,19 +42,25 @@ public class Customer {
         System.out.println("4. Kembali ke Login");
 
         inMenu = inMenuCustomer.nextInt();
+        Menu backToMenu = new Menu();
+        Restoran resto = new Restoran();
 
         switch (inMenu){
             case 1:
-                System.out.println("masuk contruct lihat resto");
+                System.out.println("DAFTAR RESTORAN\n");
+                resto.daftarRestoUser();
+                System.out.println("\n");
+                menuCustomer();
                 break;
             case 2:
-                System.out.println("masuk contruct buat pesanan");
+                System.out.println("BUAT PESANAN");
+                backToMenu.orderMenu();
                 break;
             case 3:
-                System.out.println("masuk contruct lihat pesanan");
+                System.out.println("LIHAT PESANAN");
                 break;
             case 4:
-                loginCustomer();
+                backToMenu.menuApp();
                 break;
             default:
                 System.out.println("masukan angka 1,2,3,4 saja");
